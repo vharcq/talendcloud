@@ -10,6 +10,9 @@
   <url>http://www.talend.org/</url>
   <modules>
     <module>code/routines</module>
+    <module>jobs/process/TDP/executedatapreparation_0.1</module>
+    <module>jobs/process/TDS/deduplicatecustomers_0.1</module>
+    <module>jobs/process/TDS/deletetasksforcampaign_0.1</module>
   </modules>
   <properties>
     <talend.project.name>TALENDCLOUD</talend.project.name>
