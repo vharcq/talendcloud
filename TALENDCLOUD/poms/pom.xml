@@ -4,7 +4,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.example.talendcloud</groupId>
   <artifactId>code.Master</artifactId>
-  <version>7.0.1</version>
+  <version>7.1.1</version>
   <packaging>pom</packaging>
   <name>TALENDCLOUD Codes Master</name>
   <url>http://www.talend.org/</url>
@@ -17,6 +17,10 @@
   <properties>
     <talend.project.name>TALENDCLOUD</talend.project.name>
     <encoding>UTF-8</encoding>
+    <talend.version>7.1.1</talend.version>
+    <talend.docker.tag>${project.version}</talend.docker.tag>
+    <maven.deploy.skip>true</maven.deploy.skip>
+    <talend.docker.name>${talend.project.name.lowercase}/${talend.job.folder}%a</talend.docker.name>
   </properties>
   <build>
     <pluginManagement>
@@ -64,30 +68,114 @@
         </plugin>
       </plugins>
     </pluginManagement>
+    <plugins>
+      <plugin>
+        <groupId>org.talend.ci</groupId>
+        <artifactId>builder-maven-plugin</artifactId>
+        <version>${talend.version}</version>
+        <executions>
+          <execution>
+            <phase>generate-sources</phase>
+            <goals>
+              <goal>generate</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
   </build>
   <profiles>
     <profile>
-      <id>ci-builder</id>
-      <activation>
-        <activeByDefault>true</activeByDefault>
-      </activation>
+      <id>docker</id>
       <build>
         <plugins>
           <plugin>
-            <groupId>org.talend</groupId>
-            <artifactId>ci.builder</artifactId>
-            <version>7.0.1</version>
+            <groupId>io.fabric8</groupId>
+            <artifactId>fabric8-maven-plugin</artifactId>
+            <version>3.5.37</version>
             <executions>
               <execution>
-                <phase>generate-sources</phase>
+                <id>start</id>
+                <phase>install</phase>
                 <goals>
-                  <goal>generate</goal>
+                  <goal>build</goal>
+                </goals>
+              </execution>
+              <execution>
+                <id>push-image</id>
+                <phase>deploy</phase>
+                <goals>
+                  <goal>push</goal>
                 </goals>
               </execution>
             </executions>
+            <configuration>
+              <skip>${docker.skip}</skip>
+              <autoPull>once</autoPull>
+              <images>
+                <image>
+                  <name>${talend.docker.name}</name>
+                  <build>
+                    <from>openjdk:8-jre-slim</from>
+                    <tags>
+                      <tag>${talend.docker.tag}</tag>
+                    </tags>
+                    <env>
+                      <JAVA_OPTS>${talend.job.jvmargs}</JAVA_OPTS>
+                    </env>
+                    <runCmds>
+                      <run>chmod +x /maven/${talend.job.name}/${talend.job.name}_run.sh</run>
+                      <run>sed -i 's/ -Xms[0-9]*M//g' /maven/${talend.job.name}/${talend.job.name}_run.sh</run>
+                      <run>sed -i 's/-Xmx[0-9]*M/$JAVA_OPTS/g' /maven/${talend.job.name}/${talend.job.name}_run.sh</run>
+                    </runCmds>
+                    <workdir>/maven/${talend.job.name}</workdir>
+                    <entryPoint>
+                      <exec>
+                        <arg>./${talend.job.name}_run.sh</arg>
+                      </exec>
+                    </entryPoint>
+                    <assembly>
+                      <descriptor>${basedir}/src/main/assemblies/assembly.xml</descriptor>
+                    </assembly>
+                  </build>
+                </image>
+              </images>
+            </configuration>
           </plugin>
         </plugins>
       </build>
+    </profile>
+    <profile>
+      <id>cloud-publisher</id>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.talend.ci</groupId>
+            <artifactId>cloudpublisher-maven-plugin</artifactId>
+            <version>${talend.version}</version>
+            <executions>
+              <execution>
+                <phase>deploy</phase>
+                <goals>
+                  <goal>publish</goal>
+                </goals>
+              </execution>
+            </executions>
+            <configuration>
+              <skip>${cloud.publisher.skip}</skip>
+            </configuration>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+    <profile>
+      <id>nexus</id>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+      </activation>
+      <properties>
+        <maven.deploy.skip>false</maven.deploy.skip>
+      </properties>
     </profile>
   </profiles>
 </project>
