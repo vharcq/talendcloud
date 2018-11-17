@@ -417,37 +417,27 @@ public class DataMasking {
      * Blurring ADD: Adds a random value from a certain range to an Integer value. Make new value random around the
      * input number
      * 
-     * 
      * {talendTypes} integer
      * 
      * {Category} Data Masking
      * 
-     * {param} int(1) inputvalue: To be a base value.Any return value will base this value.
+     * {param} int(1) basevalue: Any return value will base this value.
      * 
      * {param} int(5) rangefrom: Minimum value which make basevalue changed.It could be a positive integer or negative
      * integer
      * 
-     * {param} int(10) rangeto: Maximum value which make inputValue changed.It could be a positive integer or negative
+     * {param} int(10) rangeto: Maximum value which make basevalue changed.It could be a positive integer or negative
      * integer.
      * 
-     * And rangeto-rangefrom must get a positive integer or zero
-     * 
      * {example}
-     * 
-     * blurNumber(1,5,10) result is [6,11]
-     * 
-     * blurNumber(1,-10,-5) result is [-9,-4]
-     * 
-     * blurNumber(1,-10,10) result is [-9,11]
-     * 
+     * blurNumber(1,5,10) result is between [6,11)
+     * blurNumber(1,10,5) result is between [6,11)
+     * blurNumber(1,-10,-5) result is between [-9,-4)
+     * blurNumber(1,-10,10) result is between [-9,11)
      */
-
     public static int blurNumber(int basevalue, int rangefrom, int rangeto) {
         int range = rangeto - rangefrom;
-        if (range < 0) {
-            return basevalue;
-        }
-        int randomInt = random.nextInt(Math.abs(rangeto - rangefrom) + rangeto >= 0 ? 1 : -1) + rangefrom;
+        int randomInt = ((range >= 0 ? 1 : -1) * random.nextInt(Math.abs(range))) + rangefrom;
         return basevalue + randomInt;
     }
 
@@ -460,25 +450,20 @@ public class DataMasking {
      * 
      * {Category} Data Masking
      * 
-     * {param} long(1) inputvalue: To be a base value.Any return value will around this value.
+     * {param} long(1) basevalue: Any return value will around this value.
      * 
-     * {param} int(5) rangefrom: Minimum value which make inputValue changed.It must be a positive integer
+     * {param} int(5) rangefrom: Minimum value which make basevalue changed.It must be a positive integer.
      * 
-     * {param} int(10) rangeto: Maximum value which make inputValue changed.It must be a positive integer.And
-     * rangeto-rangefrom must get a positive integer or zero
+     * {param} int(10) rangeto: Maximum value which make basevalue changed.It must be a positive integer.
      * 
-     * {example} blurNumber(1,5,10) # returns any long by [-9,11]
-     * 
+     * {example}
+     * blurNumber(1,5,10) # returns any long between [6,11)
+     * blurNumber(1,10,5) # returns any long between [6,11)
      */
-
-    public static long blurNumber(long inputValue, int rangefrom, int rangeto) {
+    public static long blurNumber(long basevalue, int rangefrom, int rangeto) {
         int range = rangeto - rangefrom;
-        if (range < 0) {
-            return inputValue;
-        }
-        int randomInt = random.nextInt(Math.abs(rangeto - rangefrom) + rangeto >= 0 ? 1 : -1) + rangefrom;
-        return inputValue + randomInt;
-
+        int randomInt = ((range >= 0 ? 1 : -1) * random.nextInt(Math.abs(range))) + rangefrom;
+        return basevalue + randomInt;
     }
 
     /**
@@ -490,24 +475,21 @@ public class DataMasking {
      * 
      * {Category} Data Masking
      * 
-     * {param} double(1.5d) inputvalue: To be a base value.Any return value will around this value.
+     * {param} double(1.5d) basevalue: Any return value will around this value.
      * 
-     * {param} int(5) rangefrom: Minimum value which make inputValue changed.It must be a positive integer
+     * {param} int(5) rangefrom: Minimum value which make basevalue changed.It must be a positive integer.
      * 
-     * {param} int(10) rangeto: Maximum value which make inputValue changed.It must be a positive integer.And
-     * rangeto-rangefrom must get a positive integer or zero
+     * {param} int(10) rangeto: Maximum value which make basevalue changed.It must be a positive integer.
      * 
-     * {example} blurNumber(1.5,5,10) # returns any double by [-8.5,11.5)
+     * {example}
+     * blurNumber(1.5,5,10) # returns any double between [6.5,11.5)
+     * blurNumber(1.5,10,5) # returns any double between [6.5,11.5)
      * 
      */
-
-    public static double blurNumber(double inputValue, int rangefrom, int rangeto) {
+    public static double blurNumber(double basevalue, int rangefrom, int rangeto) {
         double range = 1.0 * (rangeto - rangefrom);
-        if (range < 0) {
-            return inputValue;
-        }
-        double randomInt = random.nextDouble() * Math.abs(rangeto - rangefrom) + rangefrom;
-        return inputValue + randomInt;
+        double randomInt = ((range >= 0 ? 1 : -1) * random.nextDouble() * Math.abs(range)) + rangefrom;
+        return basevalue + randomInt;
     }
 
     /**
@@ -519,25 +501,21 @@ public class DataMasking {
      * 
      * {Category} Data Masking
      * 
-     * {param} float(1.5) inputvalue: To be a base value.Any return value will around this value.
+     * {param} float(1.5) basevalue: Any return value will around this value.
      * 
-     * {param} int(5) rangefrom: Minimum value which make inputValue changed.It must be a positive integer
+     * {param} int(5) rangefrom: Minimum value which make basevalue changed.It must be a positive integer.
      * 
-     * {param} int(10) rangeto: Maximum value which make inputValue changed.It must be a positive integer.And
-     * rangeto-rangefrom must get a positive integer or zero
+     * {param} int(10) rangeto: Maximum value which make basevalue changed.It must be a positive integer.
      * 
-     * {example} blurNumber(1.5,5,10) # returns any integer by [-8.5,11.5)
+     * {example}
+     * blurNumber(1.5,5,10) # returns any integer between [6.5,11.5)
+     * blurNumber(1.5,10,5) # returns any integer between [6.5,11.5)
      * 
      */
-
-    public static float blurNumber(float inputValue, int rangefrom, int rangeto) {
+    public static float blurNumber(float basevalue, int rangefrom, int rangeto) {
         float range = 1.0f * (rangeto - rangefrom);
-        if (range < 0) {
-            return inputValue;
-        }
-        float randomInt = random.nextFloat() * Math.abs(rangeto - rangefrom) + rangefrom;
-        return inputValue + randomInt;
-
+        float randomInt = ((range >= 0 ? 1 : -1) * random.nextFloat() * Math.abs(range)) + rangefrom;
+        return basevalue + randomInt;
     }
 
     /**
