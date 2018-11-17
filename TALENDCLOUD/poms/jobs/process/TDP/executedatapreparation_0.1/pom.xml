@@ -5,13 +5,13 @@
   <parent>
     <groupId>org.example.talendcloud</groupId>
     <artifactId>code.Master</artifactId>
-    <version>7.0.1</version>
+    <version>7.1.1</version>
     <relativePath>../../../../</relativePath>
   </parent>
   <groupId>org.example.talendcloud.job</groupId>
   <artifactId>ExecuteDataPreparation</artifactId>
   <version>0.1.0</version>
-  <name>TALENDCLOUD ExecuteDataPreparation-0.1.0 (0.1,Job Designs)</name>
+  <name>TALENDCLOUD ExecuteDataPreparation-0.1.0 (0.1,Jobs)</name>
   <properties>
     <output.resources.dir>${talend.job.name}/src/main/resources</output.resources.dir>
     <talend.job.applyContextToChildren>false</talend.job.applyContextToChildren>
@@ -20,22 +20,23 @@
     <talend.job.version>0.1</talend.job.version>
     <talend.project.name.lowercase>talendcloud</talend.project.name.lowercase>
     <talend.job.path>talendcloud/executedatapreparation_0_1</talend.job.path>
+    <project.distribution-management.repository.id>${project.distributionManagement.repository.id}</project.distribution-management.repository.id>
     <maven.build.timestamp.format>yyyy-MM-dd HHmmssSSS</maven.build.timestamp.format>
     <talend.project.name>TALENDCLOUD</talend.project.name>
-    <talend.product.version>7.0.1.20180411_1414</talend.product.version>
+    <talend.product.version>7.1.1.20181026_1147</talend.product.version>
     <talend.job.finalName>executedatapreparation_0_1</talend.job.finalName>
     <talend.pigudf.groupid>org.example.talendcloud.pigudf</talend.pigudf.groupid>
     <talend.routine.groupid>org.example.talendcloud.code</talend.routine.groupid>
     <current.bundle.resources.dir>${basedir}/src/main/bundle-resources</current.bundle.resources.dir>
-    <talend.job.jvmargs>-Xms256M -Xmx1024M -Dfile.encoding=UTF-8</talend.job.jvmargs>
-    <talend.job.stat>true</talend.job.stat>
-    <talend.project.branch>master</talend.project.branch>
+    <talend.job.jvmargs>-Xms256M -Xmx1024M -Dfile.encoding=UTF-8 </talend.job.jvmargs>
     <talend.job.context>Default</talend.job.context>
+    <talend.job.stat>true</talend.job.stat>
     <talend.job.date>${maven.build.timestamp}</talend.job.date>
     <current.resources.dir>${basedir}/src/main/ext-resources</current.resources.dir>
     <talend.job.name>ExecuteDataPreparation</talend.job.name>
     <talend.job.id>_CY0soKSGEeiVcfFy_i6rZA</talend.job.id>
     <talend.project.id>0</talend.project.id>
+    <project.distribution-management.repository.url>${project.distributionManagement.repository.url}</project.distribution-management.repository.url>
     <talend.job.folder>tdp/</talend.job.folder>
     <talend.job.framework></talend.job.framework>
     <talend.job.type>Standard</talend.job.type>
@@ -69,17 +70,12 @@
     <dependency>
       <groupId>commons-beanutils</groupId>
       <artifactId>commons-beanutils</artifactId>
-      <version>1.8.0</version>
-    </dependency>
-    <dependency>
-      <groupId>org.talend.libraries</groupId>
-      <artifactId>commons-beanutils-1.8.3</artifactId>
-      <version>6.0.0</version>
+      <version>1.8.3</version>
     </dependency>
     <dependency>
       <groupId>commons-codec</groupId>
       <artifactId>commons-codec</artifactId>
-      <version>1.9</version>
+      <version>1.10</version>
     </dependency>
     <dependency>
       <groupId>commons-collections</groupId>
@@ -97,14 +93,19 @@
       <version>1.8.1</version>
     </dependency>
     <dependency>
-      <groupId>org.talend.libraries</groupId>
-      <artifactId>commons-lang-2.6</artifactId>
-      <version>6.0.0</version>
+      <groupId>commons-io</groupId>
+      <artifactId>commons-io</artifactId>
+      <version>2.6</version>
+    </dependency>
+    <dependency>
+      <groupId>commons-lang</groupId>
+      <artifactId>commons-lang</artifactId>
+      <version>2.6</version>
     </dependency>
     <dependency>
       <groupId>org.apache.commons</groupId>
       <artifactId>commons-lang3</artifactId>
-      <version>3.4</version>
+      <version>3.7</version>
     </dependency>
     <dependency>
       <groupId>commons-logging</groupId>
@@ -112,39 +113,39 @@
       <version>1.2</version>
     </dependency>
     <dependency>
-      <groupId>org.talend.libraries</groupId>
-      <artifactId>commons-logging-1.1.3</artifactId>
-      <version>6.0.0</version>
+      <groupId>commons-logging</groupId>
+      <artifactId>commons-logging</artifactId>
+      <version>1.1.3</version>
     </dependency>
     <dependency>
       <groupId>commons-validator</groupId>
       <artifactId>commons-validator</artifactId>
-      <version>1.5.0</version>
+      <version>1.6</version>
     </dependency>
     <dependency>
       <groupId>org.talend.components</groupId>
       <artifactId>components-api</artifactId>
-      <version>0.23.1</version>
+      <version>0.25.3</version>
     </dependency>
     <dependency>
       <groupId>org.talend.components</groupId>
       <artifactId>components-common</artifactId>
-      <version>0.23.1</version>
+      <version>0.25.3</version>
     </dependency>
     <dependency>
       <groupId>org.talend.components</groupId>
       <artifactId>components-dataprep</artifactId>
-      <version>0.23.1</version>
+      <version>0.25.3</version>
     </dependency>
     <dependency>
       <groupId>org.talend.daikon</groupId>
       <artifactId>daikon</artifactId>
-      <version>0.23.0</version>
+      <version>0.27.0</version>
     </dependency>
     <dependency>
-      <groupId>org.talend.libraries</groupId>
-      <artifactId>dom4j-1.6.1</artifactId>
-      <version>6.0.0</version>
+      <groupId>dom4j</groupId>
+      <artifactId>dom4j</artifactId>
+      <version>1.6.1</version>
     </dependency>
     <dependency>
       <groupId>org.talend.libraries</groupId>
@@ -154,22 +155,22 @@
     <dependency>
       <groupId>org.apache.httpcomponents</groupId>
       <artifactId>fluent-hc</artifactId>
-      <version>4.5.1</version>
+      <version>4.5.5</version>
     </dependency>
     <dependency>
       <groupId>com.google.guava</groupId>
       <artifactId>guava</artifactId>
-      <version>19.0</version>
+      <version>20.0</version>
     </dependency>
     <dependency>
       <groupId>org.apache.httpcomponents</groupId>
       <artifactId>httpclient</artifactId>
-      <version>4.5.1</version>
+      <version>4.5.5</version>
     </dependency>
     <dependency>
       <groupId>org.apache.httpcomponents</groupId>
       <artifactId>httpcore</artifactId>
-      <version>4.4.3</version>
+      <version>4.4.9</version>
     </dependency>
     <dependency>
       <groupId>com.fasterxml.jackson.core</groupId>
@@ -178,13 +179,8 @@
     </dependency>
     <dependency>
       <groupId>com.fasterxml.jackson.core</groupId>
-      <artifactId>jackson-annotations</artifactId>
-      <version>2.9.4</version>
-    </dependency>
-    <dependency>
-      <groupId>com.fasterxml.jackson.core</groupId>
       <artifactId>jackson-core</artifactId>
-      <version>2.9.4</version>
+      <version>2.9.5</version>
     </dependency>
     <dependency>
       <groupId>org.codehaus.jackson</groupId>
@@ -194,7 +190,7 @@
     <dependency>
       <groupId>com.fasterxml.jackson.core</groupId>
       <artifactId>jackson-databind</artifactId>
-      <version>2.9.4</version>
+      <version>2.9.5</version>
     </dependency>
     <dependency>
       <groupId>org.codehaus.jackson</groupId>
@@ -219,7 +215,7 @@
     <dependency>
       <groupId>org.slf4j</groupId>
       <artifactId>jcl-over-slf4j</artifactId>
-      <version>1.6.6</version>
+      <version>1.7.25</version>
     </dependency>
     <dependency>
       <groupId>joda-time</groupId>
@@ -232,14 +228,19 @@
       <version>4.9.9-TALEND</version>
     </dependency>
     <dependency>
-      <groupId>org.talend.libraries</groupId>
-      <artifactId>json-lib-2.4-jdk15</artifactId>
-      <version>6.0.0</version>
+      <groupId>net.sf.json-lib</groupId>
+      <artifactId>json-lib</artifactId>
+      <version>2.4.1-talend</version>
     </dependency>
     <dependency>
-      <groupId>org.talend.libraries</groupId>
-      <artifactId>log4j-1.2.16</artifactId>
-      <version>6.0.0</version>
+      <groupId>org.jsoup</groupId>
+      <artifactId>jsoup</artifactId>
+      <version>1.11.2</version>
+    </dependency>
+    <dependency>
+      <groupId>log4j</groupId>
+      <artifactId>log4j</artifactId>
+      <version>1.2.17</version>
     </dependency>
     <dependency>
       <groupId>org.talend.libraries</groupId>
@@ -264,7 +265,7 @@
     <dependency>
       <groupId>org.slf4j</groupId>
       <artifactId>slf4j-api</artifactId>
-      <version>1.7.12</version>
+      <version>1.7.25</version>
     </dependency>
     <dependency>
       <groupId>org.talend.libraries</groupId>
@@ -279,7 +280,7 @@
     <dependency>
       <groupId>org.talend.libraries</groupId>
       <artifactId>talend-codegen-utils</artifactId>
-      <version>0.20.4</version>
+      <version>0.25.3</version>
     </dependency>
     <dependency>
       <groupId>org.talend.libraries</groupId>
@@ -299,7 +300,7 @@
     <dependency>
       <groupId>org.example.talendcloud.code</groupId>
       <artifactId>routines</artifactId>
-      <version>7.0.1</version>
+      <version>7.1.1</version>
     </dependency>
   </dependencies>
   <build>
@@ -336,6 +337,30 @@
       </build>
     </profile>
     <profile>
+      <id>signature</id>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+      </activation>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.talend.ci</groupId>
+            <artifactId>signer-maven-plugin</artifactId>
+            <version>${talend.version}</version>
+            <executions>
+              <execution>
+                <id>sign</id>
+                <phase>package</phase>
+                <goals>
+                  <goal>sign</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+    <profile>
       <id>default-settings</id>
       <activation>
         <activeByDefault>true</activeByDefault>
@@ -361,8 +386,14 @@
         <activeByDefault>true</activeByDefault>
       </activation>
       <properties>
-        <templates.dir>${basedir}/src/main/templates/</templates.dir>
         <assemblies.dir>${basedir}/src/main/assemblies/</assemblies.dir>
+        <pigudfpom.dir>${parentpom.dir}code/pigudf/</pigudfpom.dir>
+        <routinescode.dir>${parentpom.dir}code/routines/src/main/</routinescode.dir>
+        <parentpom.dir>${project.parent.relativePath}</parentpom.dir>
+        <templates.dir>${basedir}/src/main/templates/</templates.dir>
+        <routinespom.dir>${parentpom.dir}code/routines/</routinespom.dir>
+        <pigudfcode.dir>${parentpom.dir}code/pigudf/src/main/</pigudfcode.dir>
+        <joblet.dir>${parentpom.dir}jobs/</joblet.dir>
         <poms.dir>${basedir}</poms.dir>
       </properties>
     </profile>
@@ -476,15 +507,6 @@
       <id>include-microservice-running-configs</id>
       <properties>
         <microservice.running.configs.dir>${current.int-resources.dir}/</microservice.running.configs.dir>
-      </properties>
-    </profile>
-    <profile>
-      <id>include-survivorship-rules</id>
-      <activation>
-        <activeByDefault>true</activeByDefault>
-      </activation>
-      <properties>
-        <survivorship.rules.dir>${current.resources.dir}/metadata/survivorship/</survivorship.rules.dir>
       </properties>
     </profile>
   </profiles>
