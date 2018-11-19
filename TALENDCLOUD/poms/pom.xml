@@ -15,7 +15,7 @@
     <module>jobs/process/TDS/deletetasksforcampaign_0.1</module>
     <module>jobs/process/test_0.1</module>
     <module>jobs/process/googedrivejson_0.1</module>
-    <module>jobs/process/awss3_0.1</module>
+    <module>jobs/process/aws_s3_to_rds_0.1</module>
   </modules>
   <properties>
     <talend.project.name>TALENDCLOUD</talend.project.name>
